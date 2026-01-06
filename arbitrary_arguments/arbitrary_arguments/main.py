@@ -1,8 +1,12 @@
-def calculate_total(*args):
-    if not args:
+def calculate_total(*prices):
+    if not prices:
         return "Your cart is empty."
 
-    total = sum(args)
+    for p in prices:
+        if not isinstance(p, (int, float)):
+            raise TypeError("Every prices should be number")
+
+    total = sum(prices)
 
     if total >= 200:
         total *= 0.8  # 20% discount
